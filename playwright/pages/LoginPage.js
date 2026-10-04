@@ -1,0 +1,29 @@
+import { expect } from '@playwright/test';
+
+export class LoginPage {
+  constructor(page) {
+    this.page = page;
+    this.username = page.locator('#user-name');
+    this.password = page.locator('#password');
+    this.loginButton = page.locator('#login-button');
+    this.errorMessage = page.locator('[data-test="error"]');
+  }
+
+  async login(username, password) {
+    await this.username.fill(username);
+    await this.password.fill(password);
+    await this.loginButton.click();
+  }
+
+  async verifyProductsPage() {
+    await expect(this.page.locator('.title')).toHaveText('Products');
+  }
+
+  async verifyErrorMessage() {
+    await expect(this.errorMessage).toBeVisible();
+  }
+
+  async verifyLoginPage() {
+    await expect(this.loginButton).toBeVisible();
+  }
+}
