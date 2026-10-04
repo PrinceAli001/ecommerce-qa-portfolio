@@ -27,7 +27,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --config=playwright/playwright.config.js
         env:
     SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
     SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}
