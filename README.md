@@ -1,77 +1,90 @@
-E-Commerce QA Test Suite
+# E-Commerce QA Test Suite
 
-Project Overview
+A comprehensive QA portfolio project demonstrating manual testing, API testing, SQL validation, Playwright automation, defect reporting, Git/GitHub, and CI/CD.
 
-A comprehensive QA portfolio project demonstrating software testing skills across manual testing, API testing, SQL database validation, Playwright automation, Git/GitHub, and CI/CD.
+## Project Overview
 
-The project focuses on testing a typical e-commerce customer journey from account registration through checkout and order placement.
+This project simulates the QA process for an e-commerce application.
 
-Testing Scope
+The goal is to demonstrate how I would approach software quality from multiple testing levels, from planning and manual testing through to automated testing and continuous integration.
 
-Testing covers:
+## Testing Scope
 
-- Account registration
-- Login and authentication
+The project covers:
+
+- User registration
+- User login
 - Product search
 - Shopping basket
 - Checkout
-- Order placement
 - Order history
 - API validation
 - Database validation
 - Automated UI testing
+- Regression testing
+- Defect reporting
 
-Tools & Technologies
+## Tools & Technologies
 
-- Manual Testing
-- Jira
-- Postman
-- SQL
-- Playwright
-- JavaScript
-- Git
-- GitHub
-- GitHub Actions
-- Sauce Labs
+- **Manual Testing**
+- **Playwright**
+- **JavaScript**
+- **Postman**
+- **SQL**
+- **Git**
+- **GitHub**
+- **GitHub Actions**
+- **Jira-style defect reporting**
 
-Test Strategy
+## Test Strategy
 
-Testing includes:
+Testing was approached using a combination of:
 
 - Functional testing
-- Positive and negative testing
-- Boundary Value Analysis (BVA)
-- Equivalence Partitioning (EP)
-- Integration testing
+- Positive testing
+- Negative testing
+- Boundary/value validation
+- Regression testing
 - API testing
 - Database validation
-- Regression testing
-- Exploratory testing
-- Automated testing
+- UI automation
 
-Manual Testing
+The test suite contains **50 manual test cases** covering the main e-commerce workflows.
 
-The manual testing suite contains 50 test cases covering:
+## Manual Testing
+
+Manual test cases are documented in:
+
+`manual-testing/test-cases.md`
+
+Coverage includes:
 
 - Registration
 - Login
-- Product Search
-- Shopping Basket
+- Product search
+- Basket
 - Checkout
 - Orders
 
-Test cases include positive, negative and boundary scenarios.
+### Test Case Format
 
-Defect Reporting
+Each test case includes:
 
-Three example defects have been documented using a structured bug-reporting format:
+- Test Case ID
+- Title
+- Preconditions
+- Test Steps
+- Expected Results
 
-- B001 — Checkout does not proceed after valid shipping information
-- B002 — Basket total displays incorrect calculation
-- B003 — Registration accepts a password below the minimum requirement
+## Defect Reporting
+
+Three example defects have been documented in:
+
+`manual-testing/bug-reports.md`
 
 Each defect includes:
 
+- Bug title
 - Environment
 - Preconditions
 - Steps to reproduce
@@ -80,107 +93,43 @@ Each defect includes:
 - Severity
 - Priority
 
-API Testing
+## API Testing
 
-API testing is performed using Postman.
+API test cases are documented in:
 
-Test scenarios include:
+`api-testing/api-test-cases.md`
 
-- Successful user registration
-- Registration with missing required data
-- Retrieving an existing user
+Testing includes:
 
-The API tests validate HTTP status codes, response data and validation behaviour.
-
-SQL Database Validation
-
-SQL is used to validate application data stored in the database.
-
-Examples include:
-
-- Retrieving users by email
-- Retrieving orders for a specific user
-- Using "INNER JOIN" to validate relationships between users and orders
-- Verifying order products, quantities and totals
-
-Playwright Automation
-
-Playwright is used to automate key e-commerce workflows.
-
-Automation covers areas such as:
-
-- Login
-- Invalid login attempts
-- Product validation
-- Shopping basket
-- Checkout
-- Logout
-- Navigation
-- Page Object Model (POM)
-- Fixtures
-- Authentication using "storageState"
-- API requests
-
-Automation focuses on stable and repeatable high-value scenarios rather than duplicating the entire manual test suite.
-
-Git & GitHub
-
-Git and GitHub are used for:
-
-- Version control
-- Branching
-- Commits
-- Pull requests
-- Code reviews
-- Repository management
-
-CI/CD
-
-GitHub Actions is used to automatically execute Playwright tests when changes are pushed to the repository.
-
-The CI pipeline helps identify automation failures early and supports continuous testing.
-
-Project Structure
-
-ecommerce-qa-portfolio/
-├── README.md
-├── test-plan/
-│   └── test-plan.md
-├── manual-testing/
-│   ├── test-cases.md
-│   └── bug-reports.md
-├── api-testing/
-│   ├── postman-collection.json
-│   └── api-test-cases.md
-├── sql/
-│   └── validation-queries.sql
-├── playwright/
-│   ├── tests/
-│   ├── pages/
-│   ├── fixtures/
-│   └── playwright.config.js
-└── .github/
-    └── workflows/
-        └── playwright.yml
-
-Key QA Skills Demonstrated
-
-- Test case design
-- Test planning
-- Functional testing
-- Negative testing
-- Boundary Value Analysis
-- Equivalence Partitioning
-- Bug reporting
-- Severity and priority assessment
-- API testing
+- Successful registration
+- Invalid registration requests
+- User retrieval
 - HTTP status code validation
-- SQL database validation
-- Playwright automation
-- Page Object Model
-- Test fixtures
-- Authentication handling
-- Git/GitHub
-- CI/CD
-- Risk-based testing
-- Regression testing 
+- Response validation
+
+Postman requests are stored in:
+
+`api-testing/postman-collection.json`
+
+## SQL Database Validation
+
+SQL validation queries are stored in:
+
+`sql/validation-queries.sql`
+
+The queries demonstrate:
+
+- `SELECT`
+- `WHERE`
+- Filtering
+- User/order validation
+- `INNER JOIN`
+
+Example validation:
+
+```sql
+SELECT Orders.Product, Orders.Quantity, Orders.Total
+FROM Users
+INNER JOIN Orders
+ON Users.UserID = Orders.UserID
+WHERE Users.UserID = 123;
